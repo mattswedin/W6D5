@@ -1,0 +1,36 @@
+<h1> Edit a cat! </h1>
+
+<form action="cat_url" method="post">
+    <input type='hidden' name='_method' value='patch'>
+    
+    <label for='name'>Name</label>
+    <input type='text' id='name' name='cat[name]' value=<%=@cat.name%>>
+    <br>
+
+    <p> Please select sex of cat!
+    <label for='sex_m'>Male</label>
+    <input type='radio' id='sex_m' name='cat[sex]' value='m' <%= @cat.sex == 'm' ? 'checked' : ''%>> 
+    <label for='sex_f'>Female</label>
+    <input type='radio' id='sex_f' name='cat[sex]' value='f' <%= @cat.sex == 'f' ? 'checked' : ''%>>
+    </p>
+
+    <label for='color'>Color</label>
+    <select id='color' name='cat[color]'>
+        <option disabled selected>Please select color!</option>
+        <%Cat::COLORS.each do |color|%>
+        <option value='<% color %>' <%= @cat.color == color ? 'selected' : ''%> ><%= color %></option>
+        <% end %>
+    </select>
+    <br>
+    <p></p>
+
+    <label for='birth_date'>DOB</label>
+    <input type='date' id='birth_date' name='cat[birth_date]' value='<%=@cat.birth_date%>' max='<%=Date.today%>'> 
+    <br>
+    <p></p>
+
+    <label for='description'>Description</label>
+    <textarea id='description' name='cat[description]'><%=@cat.description%></textarea>
+
+    <input type="submit" value="Update Cat">
+</form>

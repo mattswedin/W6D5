@@ -1,13 +1,17 @@
 <h1> Make a new Cat!! </h1>
 
-<form action="users_url" method="post">
+<form action="cats_url" method="post">
     <label for='name'>Name</label>
     <input type='text' id='name' name='cat[name]'>
-    <p> Please select sex of cat! </p>
+    <br>
+
+    <p> Please select sex of cat!
     <label for='sex_m'>Male</label>
     <input type='radio' id='sex_m' name='cat[sex]' value='m'>
     <label for='sex_f'>Female</label>
     <input type='radio' id='sex_f' name='cat[sex]' value='f'>
+    </p>
+
     <label for='color'>Color</label>
     <select id='color' name='cat[color]'>
         <option disabled selected>Please select color!</option>
@@ -15,7 +19,16 @@
         <option value='<% color %>'><%= color %></option>
         <% end %>
     </select>
-    
-  
+    <br>
+    <p></p>
 
+    <label for='birth_date'>DOB</label>
+    <input type='date' id='birth_date' name='cat[birth_date]' max='<%=Date.today%>'>
+    <br>
+    <p></p>
+
+    <label for='description'>Description</label>
+    <textarea id='description' name='cat[description]'></textarea>
+
+    <input type="submit" value="Create Cat">
 </form>
